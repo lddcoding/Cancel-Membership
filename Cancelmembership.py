@@ -75,7 +75,7 @@ if check_value_exists("email", email) == True:
 
     # Button to send email
     
-    if st.button('Send Email'):
+    if st.button('Cancel Membership'):
         if not email_content:
             st.warning('Please write a feedback')
 
