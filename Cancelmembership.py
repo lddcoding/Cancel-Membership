@@ -70,35 +70,36 @@ if check_value_exists("email", email) == True:
 
     #Obligated to leave an inquiry message
     st.title('Cancel Membership')
-    email_content = st.text_area('Feedback', height=200, max_chars=750, )
+    #email_content = st.text_area('Feedback', height=200, max_chars=750, )
     
 
     # Button to send email
     
     if st.button('Cancel Membership'):
-        if not email_content:
-            st.warning('Please write a feedback')
+        cancel_membership(user_data['email'])
+        #if not email_content:
+            #st.warning('Please write a feedback')
 
-        else:
+        #else:
 
             # Create a SendGrid message
-            message = Mail(
-                from_email = 'laurent.dderome@gmail.com',  #ANY ADDRESS USED TO SEND EMAILS
-                to_emails = 'laurentderome9@gmail.com', #MY EMAIL TO RECEIVE INQUIRY FROM CUSTOMERS
-                subject=f'Streamlit Inquiry Email : Cancel Membership',
-                plain_text_content=f"""*Content*: {email_content} 
-    --------------------
-    Inquiry made by EMAIL: ({user_data['email']}), USERNAME: ({user_data['username']})""")
+            #message = Mail(
+                #from_email = 'laurent.dderome@gmail.com',  #ANY ADDRESS USED TO SEND EMAILS
+                #to_emails = 'laurentderome9@gmail.com', #MY EMAIL TO RECEIVE INQUIRY FROM CUSTOMERS
+                #subject=f'Streamlit Inquiry Email : Cancel Membership',
+                #plain_text_content=f"""*Content*: {email_content} 
+    #--------------------
+    #Inquiry made by EMAIL: ({user_data['email']}), USERNAME: ({user_data['username']})""")
             
 
             #try:
             # Send the email using SendGrid API
-            response = sg.send(message)
+            #response = sg.send(message)
 
-            if response.status_code == 202:
-                cancel_membership(user_data['email'])
-            else:
-                st.error('Error, please contact the support team')
+            #if response.status_code == 202:
+                
+            #else:
+                #st.error('Error, please contact the support team')
             #except Exception as e:
                 #st.error(f'An error occurred: {str(e)}')
 
