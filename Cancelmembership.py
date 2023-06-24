@@ -91,16 +91,16 @@ if check_value_exists("email", email) == True:
     Inquiry made by EMAIL: ({user_data['email']}), USERNAME: ({user_data['username']})""")
             
 
-            try:
-                # Send the email using SendGrid API
-                response = sg.send(message)
+            #try:
+            # Send the email using SendGrid API
+            response = sg.send(message)
 
-                if response.status_code == 202:
-                    cancel_membership(user_data['email'])
-                else:
-                    st.error('Error, please contact the support team')
-            except Exception as e:
-                st.error(f'An error occurred: {str(e)}')
+            if response.status_code == 202:
+                cancel_membership(user_data['email'])
+            else:
+                st.error('Error, please contact the support team')
+            #except Exception as e:
+                #st.error(f'An error occurred: {str(e)}')
 
 else:
     st.error("The email wasn't found in the database")
